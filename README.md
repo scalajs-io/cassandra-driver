@@ -2,7 +2,7 @@ Cassandra-driver API for Scala.js
 =======================
 This is a Scala.js type-safe binding for [cassandra-driver](https://www.npmjs.com/package/cassandra-driver) 
 
-A Fast & forgiving HTML/XML/RSS parser.
+DataStax Node.js Driver for Apache Cassandra.
 
 #### Build Dependencies
 
