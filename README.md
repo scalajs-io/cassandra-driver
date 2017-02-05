@@ -44,6 +44,11 @@ $ sbt test
   }
 ```
 
+```scala
+  @ScalaJSDefined
+  class Student(val id: String, val name: String, val course: String) extends js.Object
+```
+
 #### Artifacts and Resolvers
 
 To add the `cassandra-driver` binding to your project, add the following to your build.sbt:  
