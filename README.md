@@ -1,21 +1,24 @@
 Cassandra-driver API for Scala.js
 =======================
-This is a Scala.js type-safe binding for [cassandra-driver](https://www.npmjs.com/package/cassandra-driver) 
+[cassandra-driver](https://www.npmjs.com/package/cassandra-driver) - DataStax Node.js Driver for Apache Cassandra.
 
-DataStax Node.js Driver for Apache Cassandra.
+### Description
 
-#### Build Dependencies
+A modern, feature-rich and highly tunable Node.js client library for Apache Cassandra (1.2+) and 
+DataStax Enterprise (3.1+) using exclusively Cassandra's binary protocol and Cassandra Query Language v3.
 
-* [ScalaJs.io v0.3.x](https://github.com/ldaniels528/scalajs.io)
+### Build Dependencies
+
+* [ScalaJs.io v0.3.x](https://github.com/scalajs-io/scalajs.io)
 * [SBT v0.13.13](http://www.scala-sbt.org/download.html)
 
-#### Build/publish the SDK locally
+### Build/publish the SDK locally
 
 ```bash
 $ sbt clean publish-local
 ```
 
-#### Running the tests
+### Running the tests
 
 Before running the tests the first time, you must ensure the npm packages are installed:
 
@@ -29,32 +32,35 @@ Then you can run the tests:
 $ sbt test
 ```
 
-#### Examples
+### Examples
 
 ```scala
-  val client = new Client(new ClientOptions(contactPoints = js.Array("localhost"), keyspace = "classroom"))
-  val students = Seq(
+import io.scalajs.nodejs.console
+import io.scalajs.npm.cassandradriver._
+import scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
+
+val client = new Client(new ClientOptions(contactPoints = js.Array("localhost"), keyspace = "classroom"))
+val students = Seq(
     js.Array("123456", "Larry Sanders", "Operating Systems")
-  )
+)
 
-  students foreach { params =>
+students foreach { params =>
     client.execute("INSERT INTO students (id, name, course) VALUES (?, ?, ?)", params, (err, student) => {
-      console.log("student =>", student)
+        console.log("student =>", student)
     })
-  }
+}
+
+@ScalaJSDefined
+class Student(val id: String, val name: String, val course: String) extends js.Object
 ```
 
-```scala
-  @ScalaJSDefined
-  class Student(val id: String, val name: String, val course: String) extends js.Object
-```
+### Artifacts and Resolvers
 
-#### Artifacts and Resolvers
-
-To add the `cassandra-driver` binding to your project, add the following to your build.sbt:  
+To add the `CassandraDriver` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "cassandra-driver" % "0.3.0.3"
+libraryDependencies += "io.scalajs.npm" %%% "cassandra-driver" % "3.2.0"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:
