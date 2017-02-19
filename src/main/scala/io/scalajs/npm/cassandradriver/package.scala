@@ -2,7 +2,7 @@ package io.scalajs.npm
 
 import io.scalajs.RawOptions
 import io.scalajs.nodejs.Error
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 
 import scala.concurrent.Promise
 import scala.scalajs.js
@@ -35,7 +35,7 @@ package object cassandradriver {
       */
     @inline
     def batchFuture(queries: js.Array[BatchUpdate], options: QueryOptions | RawOptions = null): Promise[Unit] = {
-      futureCallbackE0[Error](client.batch(queries, options, _))
+      promiseWithError0[Error](client.batch(queries, options, _))
     }
 
     /**
@@ -49,7 +49,7 @@ package object cassandradriver {
     def eachRowFuture[T](query: String,
                          params: CassandraParams,
                          options: QueryOptions | RawOptions = null): Promise[(Int, T)] = {
-      futureCallbackA2[Int, T](client.eachRow(query, params, _))
+      promiseCallback2[Int, T](client.eachRow(query, params, _))
     }
 
     /**
@@ -63,7 +63,7 @@ package object cassandradriver {
     def executeFuture(query: String,
                       params: CassandraParams,
                       options: QueryOptions | RawOptions): Promise[js.Dictionary[_]] = {
-      futureCallbackE1[Error, js.Dictionary[_]](client.execute(query, params, options, _))
+      promiseWithError1[Error, js.Dictionary[_]](client.execute(query, params, options, _))
     }
 
     /**
@@ -74,7 +74,7 @@ package object cassandradriver {
       */
     @inline
     def executeFuture(query: String, params: CassandraParams): Promise[js.Dictionary[_]] = {
-      futureCallbackE1[Error, js.Dictionary[_]](client.execute(query, params, _))
+      promiseWithError1[Error, js.Dictionary[_]](client.execute(query, params, _))
     }
 
     /**
