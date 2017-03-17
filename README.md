@@ -59,7 +59,7 @@ class Student(val id: String, val name: String, val course: String) extends js.O
 To add the `CassandraDriver` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "cassandra-driver" % "3.2.0-2"
+libraryDependencies += "io.scalajs.npm" %%% "cassandra-driver" % "3.2.0-3"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:
