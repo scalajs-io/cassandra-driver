@@ -8,7 +8,7 @@ import org.scalatest.FunSpec
 
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters._
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Cassandra Driver Tests
@@ -137,7 +137,7 @@ class CassandraDriverTest extends FunSpec {
   */
 object CassandraDriverTest {
 
-  @ScalaJSDefined
+
   class Student(val id: String, val name: String, val course: String) extends js.Object
 
   @js.native

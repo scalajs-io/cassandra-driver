@@ -37,7 +37,7 @@ $ sbt test
 import io.scalajs.nodejs.console
 import io.scalajs.npm.cassandradriver._
 import scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 val client = new Client(new ClientOptions(contactPoints = js.Array("localhost"), keyspace = "classroom"))
 val students = Seq(
@@ -50,7 +50,7 @@ students foreach { params =>
     })
 }
 
-@ScalaJSDefined
+
 class Student(val id: String, val name: String, val course: String) extends js.Object
 ```
 
@@ -59,7 +59,7 @@ class Student(val id: String, val name: String, val course: String) extends js.O
 To add the `CassandraDriver` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "cassandra-driver" % "0.4.1"
+libraryDependencies += "io.scalajs.npm" %%% "cassandra-driver" % "0.4.2"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:
